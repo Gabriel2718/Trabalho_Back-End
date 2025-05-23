@@ -9,12 +9,12 @@ A aplicação foi desenvolvida visando o gerenciamento de dados referentes a cli
 
 ## Documentos
 /src <br>
-&emsp;/management
-&emsp;&emsp;[db.js](https://github.com/Gabriel2718/Trabalho_Back-End/blob/main/src/management/db.js)
-&emsp;&emsp;[logger.js](https://github.com/Gabriel2718/Trabalho_Back-End/blob/main/src/management/logger.js)
-&emsp;/models
-&emsp;&emsp;[cliente.js](https://github.com/Gabriel2718/Trabalho_Back-End/blob/main/src/models/cliente.js)
-&emsp;&emsp;[compra.js](https://github.com/Gabriel2718/Trabalho_Back-End/blob/main/src/models/compra.js)
-&emsp;&emsp;[produto.js](https://github.com/Gabriel2718/Trabalho_Back-End/blob/main/src/models/produto.js)
-&emsp;[package-lock.json](https://github.com/Gabriel2718/Trabalho_Back-End/blob/main/src/package-lock.json)
-&emsp;[package.json](https://github.com/Gabriel2718/Trabalho_Back-End/blob/main/src/package.json)
+&emsp;/management <br>
+&emsp;&emsp;[db.js](https://github.com/Gabriel2718/Trabalho_Back-End/blob/main/src/management/db.js) <br>
+&emsp;&emsp;[logger.js](https://github.com/Gabriel2718/Trabalho_Back-End/blob/main/src/management/logger.js) <br>
+&emsp;/models <br>
+&emsp;&emsp;[cliente.js](https://github.com/Gabriel2718/Trabalho_Back-End/blob/main/src/models/cliente.js) <br>
+&emsp;&emsp;[compra.js](https://github.com/Gabriel2718/Trabalho_Back-End/blob/main/src/models/compra.js) <br>
+&emsp;&emsp;[produto.js](https://github.com/Gabriel2718/Trabalho_Back-End/blob/main/src/models/produto.js) <br>
+&emsp;[package-lock.json](https://github.com/Gabriel2718/Trabalho_Back-End/blob/main/src/package-lock.json) <br>
+&emsp;[package.json](https://github.com/Gabriel2718/Trabalho_Back-End/blob/main/src/package.json) <br>
