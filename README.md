@@ -1,4 +1,4 @@
-# Back-End:<br> Integração Entre MongoDB e Node.js
+# <p align=center>Back-End:<br> Integração Entre MongoDB e Node.js</p>
 
 ## Bruno Circhia Biazon 2647958<br>Gabriel Carvalho Reginato 2647974
 <br><br>
