@@ -3,26 +3,38 @@ const { Logger } = require('./logger');
 
 class Cliente{
     constructor(nome, email) {
-        this.nome = nome;
-        this.email = email;
+        this._nome = "";
+        this._email = "";
     }
 
-    async toInsert(callBack) {
+    getNome() {
+        return this._nome;
+    }
+
+    getEmail() {
+        return this._email;
+    }
+
+    setNome(nome) {
+        this._nome = nome;
+    }
+
+    setEmail(email) {
+        this._email = email;
+    }
+
+    async toInsert() {
         try {
             const { db, client } = await connect();
-
             const result = await db.collection("clientes").insertOne({
                 nome: this.nome,
                 email: this.email,
             });
-
-            console.log('Cliente registrado', result.insertedId);
-
             client.close();
-
-            callBack();
+            return result.insertedId;
         } catch(error) {
             Logger.log("Erro ao inserir dados do cliente: " + error);
+            return null;
         }
     }
 
@@ -32,10 +44,11 @@ class Cliente{
             const result = await db.collection("clientes").updateMany(filtro, {
                 $set: novosDados,
             });
-            console.log("Usuário(s) atualizado(s)", result.modifiedCount);
             client.close();
+            return result.modifiedCount;
         } catch (error) {
             Logger.log("Erro ao atualizar usuário(s): " + error);
+            return null;
         }
     }
 
@@ -43,10 +56,11 @@ class Cliente{
         try {
             const { db, client } = await connect();
             const clientes = await db.collection("clientes").find(filtro).toArray();
-            console.log("Usuário(s) encontrado(s)", clientes);
             client.close();
+            return clientes;
         } catch (error) {
             Logger.log("Erro ao buscar usuário(s): " + error);
+            return null;
         }
     }
 
@@ -54,10 +68,11 @@ class Cliente{
         try {
             const { db, client } = await connect();
             const result = await db.collection("clientes").deleteMany(filtro);
-            console.log("Usuário(s) deletado(s)", result.deletedCount);
             client.close();
+            return result.deletedCount;
         } catch (error) {
             Logger.log("Erro ao deletar usuário(s): " + error);
+            return null;
         }
     }
 }
