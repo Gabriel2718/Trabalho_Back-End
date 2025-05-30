@@ -2,33 +2,49 @@ const { connect } = require('./db');
 const { Logger } = require('./logger');
 
 class Produto{
-    constructor(codigo, nome, preco) {
-        this.codigo = codigo;
-        this.nome = nome;
-        this.preco = preco;
+    constructor() {
+        this._codigo = 0;
+        this._nome = "";
+        this._preco = 0.0;
+    }
+
+    getCodigo() {
+        return this._codigo;
+    }
+
+    getNome() {
+        return this._nome;
+    }
+
+    getPreco() {
+        return this._preco;
     }
 
     setCodigo(codigo) {
-        this.codigo = codigo;
+        this._codigo = codigo;
     }
 
-    async toInsert(callBack) {
+    setNome(nome) {
+        this._nome = nome;
+    }
+
+    setPreco(preco) {
+        this._preco = preco;
+    }
+
+    async toInsert() {
         try {
             const { db, client } = await connect();
-
             const result = await db.collection("produtos").insertOne({
-                codigo: this.codigo,
+                codigo: parseInt(this.codigo),
                 nome: this.nome,
-                preco: this.preco,
+                preco: parseFloat(this.preco),
             });
-
-            console.log('Produto registrado', result.insertedId);
-
             client.close();
-
-            callBack();
+            return result.insertedId;
         } catch(error) {
             Logger.log(`Erro ao inserir dados do produto: ${error}`);
+            return null;
         }
     }
 
@@ -36,16 +52,37 @@ class Produto{
         try {
             const { db, client } = await connect();
             const produto = await db.collection("produtos").find(filtro).toArray();
-            if(produto.length == 0) {
-                console.log("Não há nenhum produto com este código de barras!");
-                return null;
-            } else {
-                console.log("\nProduto encontrado!");
-            }
             client.close();
-            return produto[0];
+            return produto;
         } catch (error) {
             Logger.log("Erro ao buscar produto: " + error);
+            return null;
+        }
+    }
+
+    static async toUpdate (filtro, novosDados) {
+        try {
+            const { db, client } = await connect();
+            const result = await db.collection("produtos").updateMany(filtro, {
+                $set: novosDados,
+            });
+            client.close();
+            return result.modifiedCount;
+        } catch (error) {
+            Logger.log("Erro ao atualizar produto(s): " + error);
+            return null;
+        }
+    }
+
+    static async toDelete(filtro={}) {
+        try {
+            const { db, client } = await connect();
+            const result = await db.collection("produtos").deleteMany(filtro);
+            client.close();
+            return result.deletedCount;
+        } catch (error) {
+            Logger.log("Erro ao excluir produto(s): " + error);
+            return null;
         }
     }
 }
