@@ -8,6 +8,30 @@ class Produto{
         this.preco = preco;
     }
 
+    getCodigo() {
+        return this.codigo;
+    }
+
+    getNome() {
+        return this.nome;
+    }
+
+    getPreco() {
+        return this.preco;
+    }
+
+    setCodigo(codigo) {
+        this.codigo = codigo;
+    }
+
+    setNome(nome) {
+        this.nome = nome;
+    }
+
+    setPreco(preco) {
+        this.preco = preco;
+    }
+
     async toInsert(callBack) {
         try {
             const { db, client } = await connect();
