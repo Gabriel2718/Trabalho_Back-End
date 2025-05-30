@@ -1,14 +1,13 @@
-
-const { Compra }= require('./compra');
-const { Produto } = require('./produto'); // Não sei pq ta nao indo o compra e produto
+const { Compra } = require("./compra");
+const { Produto } = require("./produto");
 const { Cliente } = require("./cliente");
-const readlineSync = require('readline-sync');
+const readlineSync = require("readline-sync");
 
 /*async function executar() {
 
   const client = new Cliente("1","Teste", "teste@email.com");
-  const compra = newCompra()
-  await client.inserir();
+  const compra = new Compra()
+  await client.toInsert();
 
   await client.buscar();
 
@@ -18,18 +17,32 @@ const readlineSync = require('readline-sync');
 
 }*/
 
-function cadastrarProduto() {
+async function cadastrarProduto() {
   p = new Produto(
-    readlineSync.question("Código de barras: "),
+    readlineSync.question("\nCódigo de barras: "),
     readlineSync.question("Nome do produto: "),
     readlineSync.question("Valor do produto: ")
   );
 
-  p.toInsert(() => {});
-  console.log('funcionando');
+  await p.toInsert(() => {});
 }
 
-function main(){
+async function buscarProduto() {
+  codigo = readlineSync.question("\nInsira o código de barras do produto: ");
+  produto = await Produto.toRead({codigo: codigo});
+  if(produto != null) {
+    console.log(`
+Código de barras: ${produto["codigo"]}
+Nome: ${produto["nome"]}
+Preço: ${produto["preco"]}
+      `);
+  }
+}
+async function removerProduto() {
+
+}
+
+async function main(){
   console.log("==========/E-commerce/==========")
   let op = 0;
   while(true) {
@@ -38,7 +51,7 @@ Selecione uma opção
 1- Cadastrar produto
 2- Buscar produto
 3- Remover produto
-    `);
+0- Sair\n`);
 
     if(op == "0") {
       console.log("Encerrando...");
@@ -47,11 +60,13 @@ Selecione uma opção
 
     switch(op) {
       case "1":
-        cadastrarProduto();
+        await cadastrarProduto();
         break;
       case "2":
+        await buscarProduto();
         break;
       case "3":
+        await removerProduto();
         break;
     }
   }
