@@ -2,8 +2,7 @@ const { connect } = require('./db');
 const { Logger } = require('./logger');
 
 class Cliente{
-    constructor(id, nome, email) {
-        this._id = id;
+    constructor(nome, email) {
         this.nome = nome;
         this.email = email;
     }
@@ -13,7 +12,6 @@ class Cliente{
             const { db, client } = await connect();
 
             const result = await db.collection("clientes").insertOne({
-                _id: this._id,
                 nome: this.nome,
                 email: this.email,
             });
@@ -28,7 +26,7 @@ class Cliente{
         }
     }
 
-    static async atualizar (filtro, novosDados) {
+    static async toUpdate (filtro, novosDados) {
         try {
             const { db, client } = await connect();
             const result = await db.collection("clientes").updateMany(filtro, {
@@ -41,7 +39,7 @@ class Cliente{
         }
     }
 
-    static async buscar(filtro={}) {
+    static async toRead(filtro={}) {
         try {
             const { db, client } = await connect();
             const clientes = await db.collection("clientes").find(filtro).toArray();
@@ -52,7 +50,7 @@ class Cliente{
         }
     }
 
-    static async deletar(filtro={}) {
+    static async toDelete(filtro={}) {
         try {
             const { db, client } = await connect();
             const result = await db.collection("clientes").deleteMany(filtro);

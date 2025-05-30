@@ -2,8 +2,8 @@ const { connect } = require('./db');
 const { Logger } = require('./logger');
 
 class Compra {
-    constructor(id, idCliente, idProduto) {
-        this._id = id;
+    constructor(codigo, idCliente, idProduto) {
+        this.codigo = codigo;
         this.idCliente = idCliente;
         this.idProduto = idProduto;
     }
@@ -13,7 +13,6 @@ class Compra {
             const { db, client } = await connect();
 
             const result = await db.collection("compras").insertOne({
-                _id: this._id,
                 idCliente: this.idCliente,
                 idProduto: this.idProduto,
             });
