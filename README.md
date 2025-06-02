@@ -5,8 +5,10 @@
 ## Disciplina: AS63A (2025/1)
 <br><br>
 
-## 🧾 Descrição do Projeto
+## Descrição do Projeto
 Consiste em uma aplicação desenvolvida em JavaScript, com o Node.js, que permite ao usuário realizar as 4 operações CRUD (inserir, ler, atualizar e remover) em um banco de dados não relacional rodando em um servidor MongoDB.<br>
 A aplicação foi desenvolvida visando o gerenciamento de dados referentes a clientes, produtos e compras de uma plataforma de e-commerce.
 <br><br>
 
+## Bibliotecas Utilizadas
+&emps;- MongoDB
