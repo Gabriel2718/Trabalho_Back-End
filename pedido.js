@@ -2,7 +2,7 @@ const { connect } = require("./db");
 const { Logger } = require("./logger");
 
 class Pedido{
-    constructor(codigo, emailCliente, codigoProduto) {
+    constructor() {
         this._codigo = 0;
         this._emailCliente = "";
         this._codigoProduto = 0;
@@ -36,8 +36,8 @@ class Pedido{
         try {
             const { db, client } = await connect();
             const result = await db.collection("pedidos").insertOne({
-                emailCliente: this.emailCliente,
-                codigoProduto: this.codigoProduto,
+                emailCliente: this._emailCliente,
+                codigoProduto: this._codigoProduto,
             });
             client.close();
             return result.insertedId;

@@ -2,7 +2,7 @@ const { connect } = require('./db');
 const { Logger } = require('./logger');
 
 class Cliente{
-    constructor(nome, email) {
+    constructor() {
         this._nome = "";
         this._email = "";
     }
@@ -27,8 +27,8 @@ class Cliente{
         try {
             const { db, client } = await connect();
             const result = await db.collection("clientes").insertOne({
-                nome: this.nome,
-                email: this.email,
+                nome: this._nome,
+                email: this._email,
             });
             client.close();
             return result.insertedId;

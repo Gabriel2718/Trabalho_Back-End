@@ -36,9 +36,9 @@ class Produto{
         try {
             const { db, client } = await connect();
             const result = await db.collection("produtos").insertOne({
-                codigo: parseInt(this.codigo),
-                nome: this.nome,
-                preco: parseFloat(this.preco),
+                codigo: parseInt(this._codigo),
+                nome: this._nome,
+                preco: parseFloat(this._preco),
             });
             client.close();
             return result.insertedId;
