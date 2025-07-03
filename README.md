@@ -10,5 +10,12 @@ Consiste em uma aplicação desenvolvida em JavaScript, com o Node.js, que permi
 A aplicação foi desenvolvida visando o gerenciamento de dados referentes a clientes, produtos e compras de uma plataforma de e-commerce.
 <br><br>
 
-## Bibliotecas Utilizadas
-&emsp;- MongoDB
+## Dependências
+&emsp;- bcryptjs
+&emsp;- body-parser
+&emsp;- cookie-parser
+&emsp;- express
+&emsp;- express-handlebars
+&emsp;- express-session
+&emsp;- hbs
+&emsp;- mongodb
