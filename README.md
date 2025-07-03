@@ -13,8 +13,8 @@ A aplicação foi desenvolvida visando o gerenciamento de dados referentes a cli
 ## Dados de Teste
 || Usuário | Senha |
 |-|-|-|
-| Usuário 1 | usuario1 | senha123 |
-| Usuário 2 | usuario2 | senha456 |
+| Usuário 1 | "usuario1" | "senha123" |
+| Usuário 2 | "usuario2" | "senha456" |
 
 <br><br>
 
