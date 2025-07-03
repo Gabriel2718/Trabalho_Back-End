@@ -11,11 +11,11 @@ A aplicação foi desenvolvida visando o gerenciamento de dados referentes a cli
 <br><br>
 
 ## Dependências
-&emsp;- bcryptjs
-&emsp;- body-parser
-&emsp;- cookie-parser
-&emsp;- express
-&emsp;- express-handlebars
-&emsp;- express-session
-&emsp;- hbs
-&emsp;- mongodb
+&emsp;- bcryptjs <br>
+&emsp;- body-parser <br>
+&emsp;- cookie-parser <br>
+&emsp;- express <br>
+&emsp;- express-handlebars <br>
+&emsp;- express-session <br>
+&emsp;- hbs <br>
+&emsp;- mongodb <br>
